@@ -98,13 +98,7 @@
     <header class="sticky top-0 z-40 bg-white/95 dark:bg-black/95 backdrop-blur-md border-b border-stone-200 dark:border-oscar-borderDark shadow-md">
         <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
             <div class="flex items-center gap-3 cursor-pointer" onclick="switchPage(4)">
-                <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-black border border-oscar-gold/50 overflow-hidden flex items-center justify-center shadow-lg">
-                    <img src="590806631_1245380927609709_5438591374146567451_n.jpg" alt="OSCAR STORE Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" class="w-full h-full object-contain p-1">
-                    <div style="display:none;" class="w-full h-full bg-black flex flex-col items-center justify-center p-1 text-oscar-gold font-black tracking-tighter leading-none">
-                        <i class="fa-solid fa-power-off text-lg mb-0.5"></i>
-                        <span class="text-[10px]">OSCAR</span>
-                    </div>
-                </div>
+                <div id="headerLogoBox" class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-black border border-oscar-gold/50 overflow-hidden flex items-center justify-center shadow-lg"></div>
                 <div>
                     <h1 class="text-xl sm:text-2xl font-black tracking-wide text-stone-900 dark:text-oscar-gold">أوسكار ستور</h1>
                     <p class="text-xs text-stone-500 dark:text-stone-400 font-semibold">OSCAR STORE • أدوات منزلية وديكور</p>
@@ -172,9 +166,6 @@
 
     <!-- Hero Section -->
     <section class="relative bg-black text-white overflow-hidden border-b border-oscar-borderDark">
-        <div class="absolute inset-0 flex items-center justify-center opacity-25 pointer-events-none">
-            <img src="590806631_1245380927609709_5438591374146567451_n.jpg" alt="OSCAR STORE Background" onerror="this.style.display='none'" class="w-full max-w-4xl object-contain scale-110">
-        </div>
         <div class="absolute inset-0 bg-gradient-to-t from-black via-black/75 to-black/60"></div>
 
         <div class="relative max-w-7xl mx-auto px-4 py-8 sm:py-12 flex flex-col lg:flex-row items-center justify-between gap-6">
@@ -187,7 +178,7 @@
                     OSCAR STORE
                 </h2>
                 <p class="text-stone-300 text-sm sm:text-base leading-relaxed mb-6">
-                    كل ما يحتاجه منزلك العصري في مكان واحد: أحدث أدوات المطبخ، ديكورات الانتريه الراقية، المكرميات اليدوية، وتشكيلة رمضان والأنوار الساحرة بأفضل الأسعار في بورسعيد.
+                    كل ما يحتاجه منزلك العصري في مكان واحد: أحدث أدوات المطبخ، ديكورات الانتريه الراقية، المكرميات اليدوية، وتشكيلة رمضان والأنوار الساحرة في بورسعيد.
                 </p>
                 <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3">
                     <button onclick="document.getElementById('mainStoreContent').scrollIntoView({behavior:'smooth'})" class="bg-oscar-gold hover:bg-oscar-goldHover text-black font-black px-6 py-3 rounded-2xl shadow-lg transition flex items-center gap-2">
@@ -266,9 +257,7 @@
         <div class="max-w-7xl mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
                 <div class="flex items-center gap-3 mb-3">
-                    <div class="w-12 h-12 rounded-xl bg-black border border-oscar-gold/50 overflow-hidden flex items-center justify-center">
-                        <img src="590806631_1245380927609709_5438591374146567451_n.jpg" alt="OSCAR STORE" onerror="this.style.display='none'" class="w-full h-full object-contain p-1">
-                    </div>
+                    <div id="footerLogoBox" class="w-12 h-12 rounded-xl bg-black border border-oscar-gold/50 overflow-hidden flex items-center justify-center"></div>
                     <h4 class="text-xl font-black text-stone-900 dark:text-oscar-gold">OSCAR STORE</h4>
                 </div>
                 <p class="text-sm text-stone-600 dark:text-stone-400 leading-relaxed mb-3">
@@ -340,7 +329,7 @@
                         class="w-full p-4 rounded-2xl border-2 border-stone-200 dark:border-oscar-borderDark hover:border-oscar-gold bg-stone-50 dark:bg-black text-right flex items-center justify-between transition group">
                     <div>
                         <span class="font-black text-base block text-stone-900 dark:text-oscar-gold group-hover:translate-x-[-2px] transition">قطاعي</span>
-                        <span class="text-xs text-stone-500 dark:text-stone-400">رقم الطلب: <strong dir="ltr">01214146335</strong></span>
+                        <span class="text-xs text-stone-500 dark:text-oscar-gold">رقم الطلب: <strong dir="ltr">01214146335</strong></span>
                     </div>
                     <i class="fa-solid fa-user-tag text-2xl text-oscar-goldDark dark:text-oscar-gold"></i>
                 </button>
@@ -473,6 +462,27 @@
     </div>
 
     <script>
+        function makeArtwork(kind) {
+            const icons = {
+                logo: `<svg viewBox="0 0 120 120" class="w-full h-full"><rect width="120" height="120" rx="22" fill="#070707"/><circle cx="60" cy="54" r="24" fill="none" stroke="#F5D78E" stroke-width="6"/><line x1="60" y1="24" x2="60" y2="54" stroke="#F5D78E" stroke-width="6" stroke-linecap="round"/><text x="60" y="96" text-anchor="middle" fill="#F5D78E" font-size="14" font-weight="900" font-family="Cairo, sans-serif">OSCAR</text></svg>`,
+                lanternMulti: `<svg viewBox="0 0 240 160" class="w-full h-full"><rect width="240" height="160" fill="#111111"/><circle cx="75" cy="84" r="46" fill="#F5D78E" opacity="0.16"/><polygon points="75,24 52,58 98,58" fill="#F5D78E"/><rect x="54" y="58" width="42" height="58" rx="8" fill="#22d3ee" stroke="#F5D78E" stroke-width="3"/><circle cx="75" cy="87" r="11" fill="#fef08a"/><rect x="50" y="116" width="50" height="8" rx="4" fill="#F5D78E"/><polygon points="165,30 146,60 184,60" fill="#F5D78E"/><rect x="148" y="60" width="34" height="50" rx="7" fill="#a855f7" stroke="#F5D78E" stroke-width="3"/><circle cx="165" cy="85" r="9" fill="#fef08a"/><rect x="145" y="110" width="40" height="7" rx="3.5" fill="#F5D78E"/></svg>`,
+                lanternCylinder: `<svg viewBox="0 0 240 160" class="w-full h-full"><rect width="240" height="160" fill="#111111"/><ellipse cx="120" cy="82" rx="52" ry="56" fill="#F5D78E" opacity="0.15"/><rect x="86" y="34" width="68" height="92" rx="14" fill="#1c1917" stroke="#F5D78E" stroke-width="4"/><rect x="94" y="46" width="52" height="68" rx="8" fill="#fef08a" opacity="0.22"/><path d="M120 56 L125 68 L138 68 L128 76 L132 89 L120 81 L108 89 L112 76 L102 68 L115 68 Z" fill="#F5D78E"/><rect x="82" y="126" width="76" height="9" rx="4" fill="#F5D78E"/></svg>`,
+                lanternCutout: `<svg viewBox="0 0 240 160" class="w-full h-full"><rect width="240" height="160" fill="#111111"/><polygon points="82,22 58,56 106,56" fill="#F5D78E"/><rect x="60" y="56" width="44" height="64" rx="8" fill="#fef9c3" stroke="#F5D78E" stroke-width="3"/><circle cx="82" cy="88" r="13" fill="#facc15" opacity="0.75"/><polygon points="158,22 134,56 182,56" fill="#F5D78E"/><rect x="136" y="56" width="44" height="64" rx="8" fill="#18181b" stroke="#F5D78E" stroke-width="3"/><circle cx="158" cy="88" r="12" fill="#fde047" opacity="0.85"/></svg>`,
+                lanternCrescent: `<svg viewBox="0 0 240 160" class="w-full h-full"><rect width="240" height="160" fill="#111111"/><circle cx="120" cy="80" r="54" fill="#F5D78E" opacity="0.16"/><path d="M132 36 A44 44 0 1 0 132 124 A34 34 0 1 1 132 36 Z" fill="#F5D78E"/><polygon points="156,52 160,62 171,62 162,68 165,78 156,72 147,78 150,68 141,62 152,62" fill="#fef08a"/></svg>`,
+                lanternColored: `<svg viewBox="0 0 240 160" class="w-full h-full"><rect width="240" height="160" fill="#111111"/><polygon points="120,22 92,58 148,58" fill="#F5D78E"/><rect x="94" y="58" width="52" height="62" rx="8" fill="#0284c7" stroke="#F5D78E" stroke-width="3"/><rect x="104" y="68" width="32" height="42" rx="6" fill="#10b981" opacity="0.75"/><circle cx="120" cy="89" r="10" fill="#fef08a"/><rect x="88" y="120" width="64" height="9" rx="4" fill="#F5D78E"/></svg>`,
+                lanternCrystal: `<svg viewBox="0 0 240 160" class="w-full h-full"><rect width="240" height="160" fill="#111111"/><polygon points="120,20 96,54 144,54" fill="#F5D78E"/><polygon points="120,54 146,86 120,124 94,86" fill="#fde68a" fill-opacity="0.35" stroke="#F5D78E" stroke-width="3"/><circle cx="120" cy="86" r="12" fill="#f59e0b" opacity="0.65"/></svg>`,
+                traysMirror: `<svg viewBox="0 0 240 160" class="w-full h-full"><rect width="240" height="160" fill="#111111"/><rect x="36" y="48" width="168" height="76" rx="14" fill="none" stroke="#F5D78E" stroke-width="4"/><rect x="46" y="58" width="148" height="56" rx="10" fill="#38bdf8" opacity="0.22" stroke="#fef08a" stroke-width="1.5"/><line x1="36" y1="60" x2="24" y2="60" stroke="#F5D78E" stroke-width="4" stroke-linecap="round"/><line x1="204" y1="60" x2="216" y2="60" stroke="#F5D78E" stroke-width="4" stroke-linecap="round"/></svg>`,
+                bowlsWelcome: `<svg viewBox="0 0 240 160" class="w-full h-full"><rect width="240" height="160" fill="#111111"/><path d="M36 66 Q62 118 88 66 Z" fill="#f43f5e" stroke="#F5D78E" stroke-width="2.5"/><path d="M92 66 Q118 118 144 66 Z" fill="#10b981" stroke="#F5D78E" stroke-width="2.5"/><path d="M148 66 Q174 118 200 66 Z" fill="#3b82f6" stroke="#F5D78E" stroke-width="2.5"/><text x="120" y="38" text-anchor="middle" fill="#F5D78E" font-size="14" font-weight="800" font-family="Cairo, sans-serif">أهلاً وسهلاً</text></svg>`,
+                standGlass: `<svg viewBox="0 0 240 160" class="w-full h-full"><rect width="240" height="160" fill="#111111"/><rect x="54" y="118" width="132" height="10" rx="5" fill="#F5D78E"/><line x1="120" y1="76" x2="120" y2="118" stroke="#F5D78E" stroke-width="5"/><path d="M46 52 Q76 86 106 52 Z" fill="#bae6fd" fill-opacity="0.45" stroke="#F5D78E" stroke-width="2.5"/><path d="M134 52 Q164 86 194 52 Z" fill="#bae6fd" fill-opacity="0.45" stroke="#F5D78E" stroke-width="2.5"/><path d="M90 38 Q120 72 150 38 Z" fill="#fef08a" fill-opacity="0.45" stroke="#F5D78E" stroke-width="2.5"/></svg>`,
+                incenseCrescent: `<svg viewBox="0 0 240 160" class="w-full h-full"><rect width="240" height="160" fill="#111111"/><circle cx="156" cy="64" r="26" fill="none" stroke="#F5D78E" stroke-width="4"/><path d="M164 46 A20 20 0 1 0 164 82 A15 15 0 1 1 164 46 Z" fill="#F5D78E"/><path d="M68 106 L128 106 L116 126 L80 126 Z" fill="#F5D78E"/><path d="M98 92 Q88 76 98 62 Q108 48 98 34" fill="none" stroke="#fef08a" stroke-width="3" stroke-linecap="round"/></svg>`,
+                kitchen: `<svg viewBox="0 0 240 160" class="w-full h-full"><rect width="240" height="160" fill="#111111"/><rect x="86" y="42" width="68" height="78" rx="14" fill="#27272a" stroke="#F5D78E" stroke-width="3.5"/><rect x="92" y="32" width="56" height="12" rx="6" fill="#F5D78E"/><circle cx="120" cy="82" r="14" fill="none" stroke="#F5D78E" stroke-width="2.5"/></svg>`,
+                living: `<svg viewBox="0 0 240 160" class="w-full h-full"><rect width="240" height="160" fill="#111111"/><path d="M96 122 C90 92 104 66 120 42 C136 66 150 92 144 122 Z" fill="#F5D78E" opacity="0.85"/><rect x="94" y="122" width="52" height="10" rx="4" fill="#d97706"/></svg>`,
+                macrame: `<svg viewBox="0 0 240 160" class="w-full h-full"><rect width="240" height="160" fill="#111111"/><line x1="56" y1="36" x2="184" y2="36" stroke="#F5D78E" stroke-width="6" stroke-linecap="round"/><path d="M84 36 L84 118 M120 36 L120 126 M156 36 L156 118" stroke="#fef3c7" stroke-width="3" stroke-dasharray="6 4"/></svg>`,
+                school: `<svg viewBox="0 0 240 160" class="w-full h-full"><rect width="240" height="160" fill="#111111"/><rect x="64" y="44" width="112" height="74" rx="14" fill="#1e293b" stroke="#F5D78E" stroke-width="3.5"/><line x1="76" y1="74" x2="164" y2="74" stroke="#F5D78E" stroke-width="3"/><circle cx="120" cy="96" r="8" fill="#F5D78E"/></svg>`
+            };
+            return icons[kind] || icons.logo;
+        }
+
         const storeData = {
             1: {
                 badge: "القسم الأول",
@@ -480,8 +490,8 @@
                 subtitle: "كل ما يلزم مطبخك العصري من أدوات التحضير، التقديم، الأطقم الكاملة والحفظ",
                 subcategories: ["الكل", "أدوات التحضير", "حافظات الطعام"],
                 products: [
-                    { id: 101, name: "مج حراري ستانلس ستيل مانع للتسريب", price: "180 ج.م", oldPrice: "210 ج.م", image: "590806631_1245380927609709_5438591374146567451_n.jpg", category: "أدوات التحضير", badge: "الأكثر مبيعاً", desc: "مج حراري عالي الجودة يحفظ حرارة المشروبات لأكثر من 6 ساعات." },
-                    { id: 102, name: "طقم علب حفظ طعام أريج (4 قطع)", price: "220 ج.م", oldPrice: "260 ج.م", image: "590806631_1245380927609709_5438591374146567451_n.jpg", category: "حافظات الطعام", badge: "عرض خاص", desc: "علب بلاستيك صحي بأغطية محكمة الإغلاق." }
+                    { id: 101, name: "مج حراري ستانلس ستيل مانع للتسريب", artwork: "kitchen", category: "أدوات التحضير", badge: "الأكثر مبيعاً", desc: "مج حراري عالي الجودة يحفظ حرارة المشروبات لأكثر من 6 ساعات." },
+                    { id: 102, name: "طقم علب حفظ طعام أريج (4 قطع)", artwork: "kitchen", category: "حافظات الطعام", badge: "عرض خاص", desc: "علب بلاستيك صحي بأغطية محكمة الإغلاق." }
                 ]
             },
             2: {
@@ -490,8 +500,8 @@
                 subtitle: "لمسات ساحرة ترتقي بديكور غرفة المعيشة والانتريه",
                 subcategories: ["الكل", "الفازات والتحف", "الوسائد والإكسسوارات"],
                 products: [
-                    { id: 201, name: "فازة سيراميك مودرن مع خطوط ذهبية فاخرة", price: "320 ج.م", oldPrice: "370 ج.م", image: "590806631_1245380927609709_5438591374146567451_n.jpg", category: "الفازات والتحف", badge: "الأكثر طلباً", desc: "فازة ديكورية بتصميم عصري راقي." },
-                    { id: 202, name: "طقم خداديات انتريه مخملي مطرز (2 قطعة)", price: "190 ج.م", oldPrice: "230 ج.م", image: "590806631_1245380927609709_5438591374146567451_n.jpg", category: "الوسائد والإكسسوارات", badge: "ألوان متميزة", desc: "خداديات ناعمة بخامات مخملية عالية الجودة." }
+                    { id: 201, name: "فازة سيراميك مودرن مع خطوط ذهبية فاخرة", artwork: "living", category: "الفازات والتحف", badge: "الأكثر طلباً", desc: "فازة ديكورية بتصميم عصري راقي." },
+                    { id: 202, name: "طقم خداديات انتريه مخملي مطرز (2 قطعة)", artwork: "living", category: "الوسائد والإكسسوارات", badge: "ألوان متميزة", desc: "خداديات ناعمة بخامات مخملية عالية الجودة." }
                 ]
             },
             3: {
@@ -500,8 +510,8 @@
                 subtitle: "تشكيلة فريدة من المشغولات اليدوية والمكرميات",
                 subcategories: ["الكل", "معلقات الحائط", "مرايا بالمكرمية"],
                 products: [
-                    { id: 301, name: "معلقة حائط مكرمية بوهيمية كبيرة", price: "450 ج.م", oldPrice: "520 ج.م", image: "590806631_1245380927609709_5438591374146567451_n.jpg", category: "معلقات الحائط", badge: "عمل يدوي 100%", desc: "معلقة فنية من خيوط القطن الطبيعي الفاخر." },
-                    { id: 302, name: "مراية ديكور مدورة محاطة بمكرمية قطنية", price: "380 ج.م", oldPrice: "440 ج.م", image: "590806631_1245380927609709_5438591374146567451_n.jpg", category: "مرايا بالمكرمية", badge: "الأكثر مبيعاً", desc: "مراية دائرية أنيقة بتصميم مكرمية يدوي راقي." }
+                    { id: 301, name: "معلقة حائط مكرمية بوهيمية كبيرة", artwork: "macrame", category: "معلقات الحائط", badge: "عمل يدوي 100%", desc: "معلقة فنية من خيوط القطن الطبيعي الفاخر." },
+                    { id: 302, name: "مراية ديكور مدورة محاطة بمكرمية قطنية", artwork: "macrame", category: "مرايا بالمكرمية", badge: "الأكثر مبيعاً", desc: "مراية دائرية أنيقة بتصميم مكرمية يدوي راقي." }
                 ]
             },
             4: {
@@ -513,19 +523,15 @@
                     {
                         id: 401,
                         name: "طقم فوانيس معدنية ملونة مضيئة",
-                        price: "350 ج.م",
-                        oldPrice: "410 ج.م",
-                        image: "AIJX6513_2.JPG",
+                        artwork: "lanternMulti",
                         category: "فوانيس رمضان",
-                        badge: "خصم خاص",
+                        badge: "مميز",
                         desc: "كود: 30-2112 • مقاسات: 21×12 سم. فوانيس معدنية بزجاج ملون وإضاءة دافئة."
                     },
                     {
                         id: 402,
                         name: "فانوس أسطواني بشخصيات رمضانية وإضاءة LED",
-                        price: "290 ج.م",
-                        oldPrice: "340 ج.م",
-                        image: "AMOK5900_2.JPG",
+                        artwork: "lanternCylinder",
                         category: "فوانيس رمضان",
                         badge: "الأكثر طلباً",
                         desc: "كود: 20-2611 • مقاسات: 26×11 سم. تصميم أسطواني ذهبي بإضاءة داخلية جذابة."
@@ -533,19 +539,15 @@
                     {
                         id: 403,
                         name: "فوانيس مفرغة ذهبية وأوف وايت مضيئة",
-                        price: "420 ج.م",
-                        oldPrice: "480 ج.م",
-                        image: "AOWQ0823_2.JPG",
+                        artwork: "lanternCutout",
                         category: "فوانيس رمضان",
-                        badge: "تخفيض",
+                        badge: "مميز",
                         desc: "كود: 20-2001 • مقاسات: 33×12 سم. نقوش إسلامية مفرغة مع لمبة إضاءة داخلية."
                     },
                     {
                         id: 404,
                         name: "فانوس هلال ونجمة كبير مضيء",
-                        price: "650 ج.م",
-                        oldPrice: "750 ج.م",
-                        image: "BPNB7808_2.JPG",
+                        artwork: "lanternCrescent",
                         category: "فوانيس رمضان",
                         badge: "مقاس كبير",
                         desc: "كود: 998 • مقاسات: 58×20×15 سم. تصميم هلال ونجمة بارز بإضاءة واضحة."
@@ -553,9 +555,7 @@
                     {
                         id: 405,
                         name: "فانوس معدني ملون مفرغ",
-                        price: "270 ج.م",
-                        oldPrice: "320 ج.م",
-                        image: "CFUF0262_2.JPG",
+                        artwork: "lanternColored",
                         category: "فوانيس رمضان",
                         badge: "مميز",
                         desc: "كود: 15-2409 • مقاسات: 24×09 سم. زجاج أزرق وأخضر مع قاعدة ونقوش مفرغة ذهبية."
@@ -563,9 +563,7 @@
                     {
                         id: 406,
                         name: "فوانيس رمضان كريستال بإضاءة دافئة",
-                        price: "310 ج.م",
-                        oldPrice: "360 ج.م",
-                        image: "COIA6114_2.JPG",
+                        artwork: "lanternCrystal",
                         category: "فوانيس رمضان",
                         badge: "الأكثر مبيعاً",
                         desc: "كود: 665 • مقاسات: 23×09 سم. فوانيس أنيقة بإضاءة دافئة وزخارف رمضانية ذهبية."
@@ -573,29 +571,23 @@
                     {
                         id: 407,
                         name: "طقم صواني تقديم ذهبية بمرايا (3 قطع)",
-                        price: "480 ج.م",
-                        oldPrice: "560 ج.م",
-                        image: "ALXR5516_2.JPG",
+                        artwork: "traysMirror",
                         category: "صواني وبولات تقديم",
-                        badge: "خصم 14%",
+                        badge: "مميز",
                         desc: "كود: 40-532 H • مقاسات: 26×07، 31×07، 35×07 سم. صواني ذهبية مفرغة بقاعدة مرايا للضيافة."
                     },
                     {
                         id: 408,
                         name: "طقم بولات تقديم أهلاً وسهلاً (4 ألوان)",
-                        price: "240 ج.م",
-                        oldPrice: "290 ج.م",
-                        image: "BRGX3982_2.JPG",
+                        artwork: "bowlsWelcome",
                         category: "صواني وبولات تقديم",
-                        badge: "تخفيض",
+                        badge: "مميز",
                         desc: "كود: 65-2020 • مقاسات: 21×16 سم. ألوان أنيقة بعبارة أهلاً وسهلاً لتقديم التسالي والمكسرات."
                     },
                     {
                         id: 409,
                         name: "ستاند تقديم زجاج ثلاثي بقاعدة ذهبية",
-                        price: "360 ج.م",
-                        oldPrice: "420 ج.م",
-                        image: "CYEP8364_2.JPG",
+                        artwork: "standGlass",
                         category: "صواني وبولات تقديم",
                         badge: "الأكثر مبيعاً",
                         desc: "كود: 50-3035 • مقاسات: 35×27×30 سم. ثلاث بولات زجاجية على قاعدة معدنية ذهبية راقية."
@@ -603,9 +595,7 @@
                     {
                         id: 410,
                         name: "مبخرة ذهبية بهلال ورمضان كريم",
-                        price: "230 ج.م",
-                        oldPrice: "275 ج.م",
-                        image: "CMEN3122_2.JPG",
+                        artwork: "incenseCrescent",
                         category: "مباخر وإضاءات",
                         badge: "جديد",
                         desc: "كود: 252 • مقاسات: 20×15 سم. مبخرة معدنية أنيقة بخلفية هلال وعبارة رمضان كريم."
@@ -618,8 +608,8 @@
                 subtitle: "تشكيلة رائعة من اللانش بوكسات والزمزميات (يُفتح القسم قبل المدارس بشهر)",
                 subcategories: ["الكل", "اللانش بوكس", "الزمزميات وزجاجات المياه"],
                 products: [
-                    { id: 501, name: "لانش بوكس صحي مقسم محكم الإغلاق", price: "170 ج.م", oldPrice: "200 ج.م", image: "590806631_1245380927609709_5438591374146567451_n.jpg", category: "اللانش بوكس", badge: "موسمي", desc: "مصنوع من مواد آمنة صحياً مع تقسيمات متعددة." },
-                    { id: 502, name: "زمزمية مياه ستانلس ستيل حافظة للحرارة", price: "190 ج.م", oldPrice: "225 ج.م", image: "590806631_1245380927609709_5438591374146567451_n.jpg", category: "الزمزميات وزجاجات المياه", badge: "مميز", desc: "زمزمية مانعة للتسريب مع حزام حمل." }
+                    { id: 501, name: "لانش بوكس صحي مقسم محكم الإغلاق", artwork: "school", category: "اللانش بوكس", badge: "موسمي", desc: "مصنوع من مواد آمنة صحياً مع تقسيمات متعددة." },
+                    { id: 502, name: "زمزمية مياه ستانلس ستيل حافظة للحرارة", artwork: "school", category: "الزمزميات وزجاجات المياه", badge: "مميز", desc: "زمزمية مانعة للتسريب مع حزام حمل." }
                 ]
             }
         };
@@ -634,6 +624,8 @@
         };
 
         document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('headerLogoBox').innerHTML = makeArtwork('logo');
+            document.getElementById('footerLogoBox').innerHTML = makeArtwork('logo');
             renderPageContent();
             updateCartUI();
             updateOrderTypeUI();
@@ -738,22 +730,15 @@
                                     <span class="bg-oscar-gold/15 text-oscar-goldDark dark:text-oscar-gold text-xs font-bold px-3 py-1 rounded-full">${p.category}</span>
                                     <span class="bg-black text-oscar-gold text-[10px] font-black px-2.5 py-1 rounded-full shadow">${p.badge}</span>
                                 </div>
-                                <div class="w-full h-56 rounded-2xl bg-stone-100 dark:bg-black border border-stone-200 dark:border-oscar-borderDark flex items-center justify-center mb-4 group-hover:scale-[1.02] transition overflow-hidden relative">
-                                    <img src="${p.image}" alt="${p.name}" onerror="this.src='590806631_1245380927609709_5438591374146567451_n.jpg'" class="w-full h-full object-contain p-2">
-                                    <div class="absolute bottom-2 right-2 bg-black/80 text-oscar-gold px-2.5 py-1 rounded-lg text-xs font-bold">
-                                        ${p.price}
-                                    </div>
+                                <div class="w-full h-48 rounded-2xl bg-stone-100 dark:bg-black border border-stone-200 dark:border-oscar-borderDark flex items-center justify-center mb-4 group-hover:scale-[1.02] transition overflow-hidden">
+                                    ${makeArtwork(p.artwork)}
                                 </div>
                                 <h3 class="font-black text-lg text-stone-900 dark:text-stone-100 mb-2 leading-snug">${p.name}</h3>
                                 <p class="text-xs text-stone-500 dark:text-stone-400 leading-relaxed mb-4">${p.desc}</p>
                             </div>
-                            <div class="pt-4 border-t border-stone-100 dark:border-stone-900 flex items-center justify-between gap-3">
-                                <div>
-                                    <span class="font-black text-oscar-goldDark dark:text-oscar-gold text-lg block leading-none">${p.price}</span>
-                                    ${p.oldPrice ? `<span class="text-xs line-through text-stone-400">${p.oldPrice}</span>` : ''}
-                                </div>
-                                <button onclick="addToCart(${p.id}, '${p.name.replace(/'/g, "")}', '${p.price}')" 
-                                        class="bg-oscar-gold hover:bg-oscar-goldHover text-black font-black px-4 py-2.5 rounded-xl text-xs flex items-center gap-2 shadow transition hover:scale-105">
+                            <div class="pt-4 border-t border-stone-100 dark:border-stone-900 flex items-center justify-end">
+                                <button onclick="addToCart(${p.id}, '${p.name.replace(/'/g, "")}')" 
+                                        class="w-full bg-oscar-gold hover:bg-oscar-goldHover text-black font-black px-4 py-2.5 rounded-xl text-xs flex items-center justify-center gap-2 shadow transition hover:scale-[1.02]">
                                     <i class="fa-solid fa-cart-plus"></i>
                                     <span>إضافة للسلة</span>
                                 </button>
@@ -776,12 +761,12 @@
             renderPageContent();
         }
 
-        function addToCart(id, name, priceStr) {
+        function addToCart(id, name) {
             const existing = cart.find(item => item.id === id);
             if (existing) {
                 existing.qty += 1;
             } else {
-                cart.push({ id, name, priceStr, qty: 1 });
+                cart.push({ id, name, qty: 1 });
             }
             updateCartUI();
             showToast(`تمت إضافة "${name}" إلى سلة المشتريات!`);
@@ -815,7 +800,6 @@
                 <div class="bg-stone-50 dark:bg-black border border-stone-200 dark:border-oscar-borderDark p-3.5 rounded-2xl flex items-center justify-between gap-3">
                     <div class="flex-1">
                         <h5 class="font-bold text-sm text-stone-900 dark:text-stone-100">${item.name}</h5>
-                        <span class="text-xs text-oscar-goldDark dark:text-oscar-gold font-black">${item.priceStr}</span>
                     </div>
                     <div class="flex items-center gap-2">
                         <button onclick="changeQty(${item.id}, -1)" class="w-7 h-7 rounded-lg bg-stone-200 dark:bg-oscar-cardDark text-stone-800 dark:text-stone-200 flex items-center justify-center font-bold hover:bg-oscar-gold hover:text-black transition">
@@ -899,8 +883,8 @@
                 <ul class="space-y-1">
             `;
             cart.forEach(item => {
-                html += `<li>• ${item.name} (${item.qty}) - <span class="text-oscar-goldDark dark:text-oscar-gold">${item.priceStr}</span></li>`;
-                itemsLines.push(`- ${item.name} | العدد: ${item.qty} | السعر: ${item.priceStr}`);
+                html += `<li>• ${item.name} (${item.qty})</li>`;
+                itemsLines.push(`- ${item.name} | العدد: ${item.qty}`);
             });
             html += `</ul>`;
 
